@@ -1,0 +1,17 @@
+.header {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 1em;
+    margin-bottom: 2em;
+    color: #fff;
+}
+
+.font {
+    background: var(--gradient-text);
+    background-clip: text;
+    -webkit-background-clop: text;
+    -webkit-text-fill-color: transparent;
+}

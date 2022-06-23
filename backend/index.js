@@ -3,7 +3,6 @@ const express = require("express");
 const nodeMail = require("nodemailer");
 const path = require("path");
 const cors = require("cors");
-const { resolve } = require("path");
 
 const app = express();
 
@@ -49,6 +48,7 @@ async function mainMail(name, email, number, text) {
   }
 }
 
+
 app.post("/v1/contact", async (req, res, next) => {
   const { name, email, number, text} = req.body;
   try {
@@ -58,6 +58,21 @@ app.post("/v1/contact", async (req, res, next) => {
   } catch (error) {
     return res.status(500).json({ message: error });  }
 });
+
+
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
+    )
+  )
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'))
+}
+
 
 
 app.listen(port, () => {
