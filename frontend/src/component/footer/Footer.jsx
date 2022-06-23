@@ -23,7 +23,7 @@ const Footer = () => {
                 kaikashimoon
       </h1>
       <FooterLink >
-                  <a href="https://meetflo.zendesk.com/hc/en-us/articles/230425728-Privacy-Policies"> <AiFillGithub style={fontStyles}/> </a>
+                  <a href="https://github.com/kaikashimoon/ApiRestFormContact/tree/backend-and-frontend"> <AiFillGithub style={fontStyles}/> </a>
                   <p>&copy;Copyright, all rights reserved. 2022.</p>
     </FooterLink>
            

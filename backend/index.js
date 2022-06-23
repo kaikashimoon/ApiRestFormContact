@@ -19,7 +19,7 @@ app.use(cors({
   }));
 
 async function mainMail(name, email, number, text) {
-  const transporter = await nodeMail.createTransport({
+  const transporter =  nodeMail.createTransport({
     service: 'gmail',
       auth: {
         type: 'OAuth2',
