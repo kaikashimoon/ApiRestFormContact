@@ -21,19 +21,21 @@ app.use(cors({
 
 async function mainMail(name, email, number, text) {
   const transporter = await nodeMail.createTransport({
-    service: 'gmail',
+    host: "mail.kamaleont.io",
+    port: 465,
+    secure: true, 
       auth: {
-        type: 'OAuth2',
         user: process.env.MAIL_USERNAME,
         pass: process.env.MAIL_PASSWORD,
-        clientId: process.env.OAUTH_CLIENTID,
-        clientSecret: process.env.OAUTH_CLIENT_SECRET,
-        refreshToken: process.env.OAUTH_REFRESH_TOKEN
-      }
+      }, tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false,
+      },
   });
   const mailOption = {
     from: process.env.MAIL_USERNAME,
-    to: process.env.MAIL_USERNAME,
+    to: process.env.MAIL_USER,
+    subject: "Nuevo mensaje desde la web kamaleont",
     html: `<b> You got a message from  <br />
     Email : ${email} <br />
     Name: ${name} <br />
